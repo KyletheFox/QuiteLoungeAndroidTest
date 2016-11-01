@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="/Users/kyleoneill/AndroidStudioProjects/QuiteLoungeAPITest/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="ec4df0b2c11f2b2999154c73730904a7ea95583c">
+        <dex dex="/Users/kyleoneill/AndroidStudioProjects/QuiteLoungeAPITest/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_83586273b09a1b43612964577b5a290be7855378/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/kyleoneill/AndroidStudioProjects/QuiteLoungeAPITest/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="cb46cdbc94fded3dcbfff5ca82d890e35b4a9a32">
+        <dex dex="/Users/kyleoneill/AndroidStudioProjects/QuiteLoungeAPITest/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_b4a7060272af3442ca5b5c70fcb62457a05dc108/classes.dex" />
+    </item>
+
+</items>

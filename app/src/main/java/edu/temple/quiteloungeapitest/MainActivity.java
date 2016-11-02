@@ -22,18 +22,19 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
-import java.nio.charset.StandardCharsets;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class MainActivity extends Activity {
 
-    private final static String url = "http://quietlounge.us-east-1.elasticbeanstalk.com/getLoungeData";
-    double lat;
-    double lng;
+
+
+    private final static String GET_URL = "http://quietlounge.us-east-1.elasticbeanstalk.com/getLoungeData";
+    private final static String POST_URL = "http://quietlounge.us-east-1.elasticbeanstalk.com/inputSound";
+    private final static int TIME_BETWEEN_HTTP_REQUESTS = 2000;
+    private double lat;
+    private double lng;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +43,7 @@ public class MainActivity extends Activity {
 
 
         this.requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 0);
-        //System.out.println(this.checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION));
+        this.requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 0);
 
         LocationManager locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
 
@@ -52,7 +53,8 @@ public class MainActivity extends Activity {
                 Toast.makeText(getApplicationContext(), "Accuracy: " + location.getAccuracy(), Toast.LENGTH_SHORT).show();
                 lat = location.getLatitude();
                 lng = location.getLongitude();
-                System.out.println("Location Updated");
+                Log.d("Update", "Location Updated");
+                Log.d("New Coordinates", "Lat: " + lat + " Lng: " + lng);
             }
 
             @Override
@@ -85,21 +87,14 @@ public class MainActivity extends Activity {
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
-                System.out.println("Lat: " + lat + " Lng: " + lng);
                 queue.add(insertSoundData());
             }
-        }, new Date(), 2000);
-
-//        System.out.println(insertSoundData());
-
-
-//        queue.add(insertSoundData());
-//        queue.add(getLoungeData());
-
+        }, new Date(), TIME_BETWEEN_HTTP_REQUESTS);
     }
 
+    @SuppressWarnings("unused")
     public JsonObjectRequest getLoungeData() {
-        return new JsonObjectRequest(Request.Method.GET, url,
+        return new JsonObjectRequest(Request.Method.GET, GET_URL,
                 null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -123,14 +118,8 @@ public class MainActivity extends Activity {
     }
 
     public JsonObjectRequest insertSoundData() {
-        String postUrl = "http://quietlounge.us-east-1.elasticbeanstalk.com/inputSound";
-
-        Map<String, String> params = new HashMap<String, String>();
-        params.put("lat", String.valueOf(lat).trim()); //Add the data you'd like to send to the server.
-        params.put("lng", String.valueOf(lng).trim()); //Add the data you'd like to send to the server.
-        params.put("sound", String.valueOf(Math.random() * 30).trim()); //Add the data you'd like to send to the server.
-
-        final JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, postUrl, new JSONObject(params),
+        
+        final JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, POST_URL, null,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
@@ -164,32 +153,12 @@ public class MainActivity extends Activity {
                     return null;
                 }
             }
-
-            //            @Override
-//            protected Map<String, String> getParams() {
-//                Map<String, String> params = new HashMap<String, String>();
-//                params.put("lat", String.valueOf(lat).trim()); //Add the data you'd like to send to the server.
-//                params.put("lng", String.valueOf(lng).trim()); //Add the data you'd like to send to the server.
-//                params.put("sound", String.valueOf(Math.random() * 30).trim()); //Add the data you'd like to send to the server.
-//                return params;
-//            }
-
-//            @Override
-//            public Map<String, String> getHeaders() throws AuthFailureError {
-//                Map<String,String> headers = new HashMap<String, String>();
-//                headers.put("Content-Type","application/x-www-form-urlencoded");
-//                return headers;
-//            }
-
-
         };
 
-        Log.d("requestData", new String(request.getBody(), StandardCharsets.UTF_8));
-        Log.d("requestURL", request.getUrl());
-        Log.d("requestBodyType", request.getBodyContentType());
-        Log.d("request", request.toString());
-
-
+//        Log.d("requestData", new String(request.getBody(), StandardCharsets.UTF_8));
+//        Log.d("requestURL", request.getUrl());
+//        Log.d("requestBodyType", request.getBodyContentType());
+//        Log.d("request", request.toString());
 
         return request;
     }

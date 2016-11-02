@@ -3,21 +3,21 @@
 
     <item
         is-multidex="true"
-        jar="/Users/kyleoneill/AndroidStudioProjects/QuiteLoungeAPITest/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jar="/Users/TheFoxx/StudioProjects/QuiteLoungeAndroidTest/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
-        sha1="735be8d8936980a1a217bb1844bb05aad026ab3a">
-        <dex dex="/Users/kyleoneill/AndroidStudioProjects/QuiteLoungeAPITest/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_83586273b09a1b43612964577b5a290be7855378/classes.dex" />
+        sha1="db0b79510c9a764a0eab1cfea7c1728991f573c5">
+        <dex dex="/Users/TheFoxx/StudioProjects/QuiteLoungeAndroidTest/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_b0ffbc703def75b0564e3a313f471a40efc3d733/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/Users/kyleoneill/AndroidStudioProjects/QuiteLoungeAPITest/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jar="/Users/TheFoxx/StudioProjects/QuiteLoungeAndroidTest/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
-        sha1="418575d71edc6e0cd4d110a50e755e917e88865c">
-        <dex dex="/Users/kyleoneill/AndroidStudioProjects/QuiteLoungeAPITest/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_b4a7060272af3442ca5b5c70fcb62457a05dc108/classes.dex" />
+        sha1="7a55b57a49e854eec6208c588f5fc92b192f99cc">
+        <dex dex="/Users/TheFoxx/StudioProjects/QuiteLoungeAndroidTest/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_6e86200d4caba183235ea4534ca61d37f924968f/classes.dex" />
     </item>
 
 </items>

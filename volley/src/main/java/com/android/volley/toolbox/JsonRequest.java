@@ -37,7 +37,8 @@ public abstract class JsonRequest<T> extends Request<T> {
 
     /** Content type for request. */
     private static final String PROTOCOL_CONTENT_TYPE =
-        String.format("application/json; charset=%s", PROTOCOL_CHARSET);
+        String.format("application/json; charset=%s", PROTOCOL_CHARSET);//
+
 
     private final Listener<T> mListener;
     private final String mRequestBody;
@@ -98,5 +99,13 @@ public abstract class JsonRequest<T> extends Request<T> {
                     mRequestBody, PROTOCOL_CHARSET);
             return null;
         }
+    }
+
+    @Override
+    public String toString() {
+        return "JsonRequest{" +
+                "mListener=" + mListener +
+                ", mRequestBody='" + mRequestBody + '\'' +
+                '}';
     }
 }
